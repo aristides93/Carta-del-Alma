@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta del Alma</title>
+    <link rel="stylesheet" href="config/style.css">
+</head>
+<body>
+    <!--
+    *** LOG DE CAMBIOS ***
+    V0.1 - 30 de Septiembre del 2025
+    Layout completo!
+    En espera de:
+    - Introducción??
+    - Nombres
+    - Planetas
+    - Jivatma
+    - Nakshatra
+    - Fases
+    -->
+
+    <script src="config/preload.js"></script>
+    <header class="header">
+        <div class="header-left">
+            <span class="header-emoji" onclick="llenarTodoRandom()">⭐</span>
+            <span class="header-title">Carta del Alma</span>
+            <span class="header-version">v0.1</span>
+        </div>
+        <div class="btn-toggle-view" id="btn-toggle-view" onclick="toggleView()">Ver Carta</div>
+    </header>
+
+    <div class="main-container">
+        <section class="datos">
+            <form id="formulario-carta" onsubmit="generarCarta(event)" autocomplete="off">
+
+                <!-- NOMBRE -->
+
+                <div class="datos-header">
+                    <h2 class="datos-titulo" onclick="llenarNombreRandom()">Nombre</h2>
+                    <button type="button" class="btn-toggle" id="nombre-toggle-btn" onclick="toggleContent('nombre')">
+                        <span id="nombre-toggle-text">X Quitar</span>
+                    </button>
+                </div>
+
+                <div id="nombre-content" class="section-content">
+                    <div class="form-group">
+                        <label for="input-nombres">Nombres</label>
+                        <input type="text" id="input-nombres" name="input-nombres" placeholder="Escribir nombres ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-apellido-1">Primer Apellido</label>
+                        <input type="text" id="input-apellido-1" name="input-apellido-1" placeholder="Primer apellido ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-apellido-2">Segundo Apellido</label>
+                        <input type="text" id="input-apellido-2" name="input-apellido-2" placeholder="Segundo apellido ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-nombre-texto">Nombre para Texto</label>
+                        <input type="text" id="input-nombre-texto" name="input-nombre-texto" placeholder="Nombre ...">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="input-idioma">Idioma</label>
+                            <select id="input-idioma" name="input-idioma">
+                                <option value="" disabled selected>- - - -</option>
+                                <option value="Español">Español</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <label for="input-genero">Género</label>
+                            <select id="input-genero" name="input-genero">
+                                <option value="" disabled selected>- - - -</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Hombre">Hombre</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+
+                <!-- PLANETAS -->
+
+                <div class="datos-header">
+                    <h2 class="datos-titulo" onclick="llenarPlanetasRandom()" >Planetas</h2>
+                    <button type="button" class="btn-toggle" id="planetas-toggle-btn" onclick="toggleContent('planetas')">
+                        <span id="planetas-toggle-text">X Quitar</span>
+                    </button>
+                </div>
+
+                <div id="planetas-content" class="section-content">
+
+                    <div class="form-row">
+                        <p class="form-group"></p>
+                        <div class="form-group" style="flex: 1;">
+                            <p>Casa</p>
+                        </div>
+                        
+                        <div class="form-group" style="flex: 2;">
+                            <p>Signo</p>
+                        </div>
+                    </div>
+
+                    <script>inputsPlanetas()</script>
+
+                </div>
+
+                <hr>
+
+                <!-- JIVATMA -->
+
+                <div class="datos-header">
+                    <h2 class="datos-titulo" onclick="llenarJivatmaRandom()">Jivatma</h2>
+                    <button type="button" class="btn-toggle" id="jivatma-toggle-btn" onclick="toggleContent('jivatma')">
+                        <span id="jivatma-toggle-text">X Quitar</span>
+                    </button>
+                </div>
+
+                <div id="jivatma-content" class="section-content">
+                    
+                    <!-- jivatma #1 -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="checkbox" class="checkbox" id="input-jivatma1-check" checked>
+                        </div>                        
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma1-planeta1" name="input-jivatma1-planeta1">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma1-planeta2" name="input-jivatma1-planeta2">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- jivatma #2 -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="checkbox" class="checkbox" id="input-jivatma2-check" checked>
+                        </div>                        
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma2-planeta1" name="input-jivatma2-planeta1">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma2-planeta2" name="input-jivatma2-planeta2">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- jivatma #3 -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="checkbox" class="checkbox" id="input-jivatma3-check" checked>
+                        </div>                        
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma3-planeta1" name="input-jivatma3-planeta1">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma3-planeta2" name="input-jivatma3-planeta2">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- jivatma #4 -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="checkbox" class="checkbox" id="input-jivatma4-check" checked>
+                        </div>                        
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma4-planeta1" name="input-jivatma4-planeta1">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <select class="planetas" id="input-jivatma4-planeta2" name="input-jivatma4-planeta2">
+                                <option value="" disabled selected>- - - -</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <hr>
+
+                <!-- NAKSHATRA -->
+
+                <div class="datos-header">
+                    <h2 class="datos-titulo"onclick="llenarNakshatraRandom()">Nakshatra</h2>
+                    <button type="button" class="btn-toggle" id="nakshatra-toggle-btn" onclick="toggleContent('nakshatra')">
+                        <span id="nakshatra-toggle-text">X Quitar</span>
+                    </button>
+                </div>
+
+                <div id="nakshatra-content" class="section-content">
+
+                    <div class="form-group" style="width: 25%">
+                        <select id="input-nakshatra" name="input-nakshatra">
+                            <option value="" disabled selected>- - - -</option>
+                            <script>
+                                for (let i = 1; i <= 27; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                </div>
+                
+                <hr>
+
+                <!-- FASES -->
+
+                <div class="datos-header">
+                    <h2 class="datos-titulo" onclick="llenarFasesRandom()">Fases</h2>
+                    <button type="button" class="btn-toggle" id="fases-toggle-btn" onclick="toggleContent('fases')">
+                        <span id="fases-toggle-text">X Quitar</span>
+                    </button>
+                </div>
+
+                <div id="fases-content" class="section-content">
+
+                    <div class="form-group" style="width: 50%">
+                        <label for="input-fases-planeta">Planeta</label>
+                        <select class="planetas" id="input-fases-planeta" name="input-fases-planeta">
+                            <option value="" disabled selected>- - - -</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-fases-años">Años</label>
+                        <input type="text" id="input-fases-años" name="input-fases-años" placeholder="Escribir años ...">
+                        
+                    </div>
+                </div>
+                
+                <!-- BOTÓN GENERAR -->
+                <hr>
+                <button type="submit" class="btn-generar" onclick="generarCarta(event)">✨ Generar</button>
+            </form>
+            
+        </section>
+
+        <section class="contenido-derecha">
+            <!-- Barra de Botones -->
+            <div class="barra-botones">
+                <button class="btn_registro_datos" id="btn_registro_datos" onclick="toggleRegistroDatos()" style="opacity: .32; cursor: default" disabled></button>
+                <p id="txt-copiado">✅ ¡Copiado al portapapeles!</p>
+                <button class="btn_copy_main btn_copy_default" id="btn_copy" onclick="copiarResultado()" style="opacity: .32; cursor: default" disabled></button>
+            </div>
+
+            <section class="area-resultado" id="resultado-content">  
+                <!-- Resultado de la Carta -->
+                <div class="resultado-carta" id="resultado-carta">
+                    <p id="resultadoFinal">Esta es la sección de Resultados. Aquí se mostrará el contenido generado basado en la selección de datos. The standard Lorem Ipsum passage, used since the 1500s
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+1914 translation by H. Rackham
+"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+
+Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+1914 translation by H. Rackham
+"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+The standard Lorem Ipsum passage, used since the 1500s
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+1914 translation by H. Rackham
+"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+
+Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+1914 translation by H. Rackham
+"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+The standard Lorem Ipsum passage, used since the 1500s
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+1914 translation by H. Rackham
+"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+
+Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+1914 translation by H. Rackham
+"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."</p>
+                </div>
+
+                <!-- Registro de Datos -->
+                <div class="overlay" id="overlay">
+                    <div class="registroDatos-container" id="registroDatos-container">
+                        <h2 style="margin-bottom: 4px;">📊 Registro de Datos</h2>
+                        <p id="fechaCreacion" style="color: #aaa; font-style: italic; font-size: .8rem"></p>
+                        <p id="registroDatos">Todavia no se ha generado la Carta del Alma</p>
+                        <button class="btn_registro_datos" onclick="toggleRegistroDatos()" style="margin-top: 32px">Cerrar</button>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </div>
+
+<script src="config/build.js"></script>
+<script src="prueba-resumenes-luna.js"></script>
+<script src="config/llenarDatosRandom.js"></script>
+<script src="config/generar.js"></script>
+</body>
+</html>
