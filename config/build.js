@@ -153,7 +153,11 @@ document.getElementById('input-jivatma4-check').addEventListener('change', funct
 });
 
 
+
+
 // Botón de Copiar
+
+document.getElementById("btn_copy").style.boxShadow = "none";
 
 function copiarResultado() {
     let div = document.getElementById("resultado-carta");

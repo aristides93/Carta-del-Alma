@@ -156,6 +156,7 @@ function generarCarta(event) {
     document.getElementById("btn_registro_datos").disabled = false;
     document.getElementById("btn_copy").style.opacity = "1";
     document.getElementById("btn_copy").style.cursor = "pointer";
+    document.getElementById("btn_copy").style.boxShadow = "0 4px 16px rgba(var(--color-main), .24)";
     document.getElementById("btn_copy").disabled = false;
 
     if (window.innerWidth <= 1024) {
