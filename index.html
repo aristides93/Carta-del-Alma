@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carta del Alma</title>
     <link rel="stylesheet" href="config/style.css">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Carta Alma" />
+    <link rel="manifest" href="/site.webmanifest" />
 </head>
 <body>
     <!--
     *** LOG DE CAMBIOS ***
+
+    V0.03 - 1 de Octubre del 2025
+    - Se ajusta tamaños de textos en moviles.
+    - Se implementa fullscreen en moviles cuando se guarda en homescreen como webapp
+    - Se agrega favicon en todos los formatos y os
+    En espera de:
+    - Introducción??
+    - Nombres
+    - Planetas
+    - Jivatma
+    - Nakshatra
+    - Fases
 
     V0.02 - 1 de Octubre del 2025
     - Se corrige en telefonos el alto de display para tomar en cuenta barra de herramietas del navegador, cambiando vh por dvh.
@@ -30,7 +48,7 @@
     - Jivatma
     - Nakshatra
     - Fases
-    
+
     -->
 
     <script src="config/preload.js"></script>
@@ -38,7 +56,7 @@
         <div class="header-left">
             <span class="header-emoji" onclick="llenarTodoRandom()">⭐</span>
             <span class="header-title">Carta del Alma</span>
-            <span class="header-version">v0.02</span>
+            <span class="header-version">v0.03</span>
         </div>
         <div class="btn-toggle-view" id="btn-toggle-view" onclick="toggleView()">Ver Carta</div>
     </header>
@@ -338,5 +356,4 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
 <script src="config/llenarDatosRandom.js"></script>
 <script src="config/generar.js"></script>
 </body>
-
 </html>

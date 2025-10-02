@@ -97,6 +97,7 @@ hr {
 
 .datos h2 {
     margin-bottom: 15px;
+    font-size: 2rem;
     color: rgb(var(--color-texto));
 }
 
@@ -270,6 +271,10 @@ hr {
     box-shadow: 0 4px 12px rgba(var(--color-main-dark),0.16);
 }
 
+.resultado-carta p {
+    font-size: 1rem;
+}
+
 
 .btn_registro_datos {
     padding: 12px 28px;
@@ -386,10 +391,10 @@ hr {
         width: 100%;
     }
     .header-emoji {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
     .header-title {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: bold;
     }
     .header-version {
@@ -425,5 +430,11 @@ hr {
     .header-left {
         gap: 4px;
     }
+    .datos h2 {
+        font-size: 1.3rem;
+    }
+    .resultado-carta p {
+    font-size: .8rem;
+}
 
 }
