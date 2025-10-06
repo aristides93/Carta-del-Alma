@@ -7,64 +7,30 @@
     <link rel="stylesheet" href="config/style.css">
 
     <!-- Favicon general -->
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" href="assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
 
     <!-- Apple iOS -->
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Carta Alma">
 
     <!-- Manifest -->
-    <link rel="manifest" href="site.manifest">
+    <link rel="manifest" href="assets/site.manifest">
     <meta name="theme-color" content="#000000">
 
-    <!-- De la pg de favicon
-    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Carta Alma" />
-    <link rel="manifest" href="site.webmanifest" />
--->
 </head>
 <body>
-    <!--
-    *** LOG DE CAMBIOS ***
-    En espera de:
-    - Introducción??
-    - Nombres
-    - Planetas
-    - Jivatma
-    - Nakshatra
-    - Fases
-
-    V0.04 - 1 de Octubre del 2025
-    - Se hacen cambios en manifest y etiquetas porque no carga favicon ni fullscreen en movil.
-
-    V0.03 - 1 de Octubre del 2025
-    - Se ajusta tamaños de textos en moviles.
-    - Se implementa fullscreen en moviles cuando se guarda en homescreen como webapp
-    - Se agrega favicon en todos los formatos y os
-    
-
-    V0.02 - 1 de Octubre del 2025
-    - Se corrige en telefonos el alto de display para tomar en cuenta barra de herramietas del navegador, cambiando vh por dvh.
-    - Se implementaron variables de color en CSS
-
-    V0.01 - 30 de Septiembre del 2025
-    Layout completo!
-
-    -->
 
     <script src="config/preload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- cargar libreria de jsPDF -->
     <header class="header">
         <div class="header-left">
             <span class="header-emoji" onclick="llenarTodoRandom()">⭐</span>
             <span class="header-title">Carta del Alma</span>
-            <span class="header-version">v0.04</span>
+            <span class="header-version">v0.05</span>
         </div>
         <div class="btn-toggle-view" id="btn-toggle-view" onclick="toggleView()">Ver Carta</div>
     </header>
@@ -282,6 +248,28 @@
                         
                     </div>
                 </div>
+
+                <hr>
+
+                <!-- EXTRAS -->
+
+                <div class="datos-header">
+                    <h2 class="datos-titulo">Extras</h2>
+                    <button type="button" class="btn-toggle" id="extras-toggle-btn" onclick="toggleContent('extras')">
+                        <span id="extras-toggle-text">X Quitar</span>
+                    </button>
+                </div>
+
+                <div id="extras-content" class="section-content">
+                    <label class="check-container" style="margin-bottom: 16px;">
+                        <input type="checkbox" id="extras-introduccion-check">
+                        <span class="check-text">Introducción</span>
+                    </label>
+                    <label class="check-container">
+                        <input type="checkbox" id="extras-conclucion-check">
+                        <span class="check-text">Conclución</span>
+                    </label>
+                </div>
                 
                 <!-- BOTÓN GENERAR -->
                 <hr>
@@ -294,6 +282,7 @@
             <!-- Barra de Botones -->
             <div class="barra-botones">
                 <button class="btn_registro_datos" id="btn_registro_datos" onclick="toggleRegistroDatos()" style="opacity: .32; cursor: default" disabled></button>
+                <button class="btn_generar_pdf" id="btn_generar_pdf" onclick="generarPDF()" style="opacity: .32; cursor: default" disabled></button>
                 <p id="txt-copiado">✅ ¡Copiado al portapapeles!</p>
                 <button class="btn_copy_main btn_copy_default" id="btn_copy" onclick="copiarResultado()" style="opacity: .32; cursor: default" disabled></button>
             </div>
@@ -360,9 +349,8 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
     </div>
 
 <script src="config/build.js"></script>
-<script src="prueba-resumenes-luna.js"></script>
+<script src="config/copy-and-pdf.js"></script>
 <script src="config/llenarDatosRandom.js"></script>
 <script src="config/generar.js"></script>
 </body>
-
 </html>
