@@ -1,0 +1,28 @@
+{
+  "name": "Carta Alma",
+  "short_name": "Carta Alma",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#049467",
+  "background_color": "#DFF2ED",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+
+  ]
+}

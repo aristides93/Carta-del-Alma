@@ -1,0 +1,31 @@
+*** LOG DE CAMBIOS ***
+    En espera de:
+    - Conclución
+    - Nombres
+    - Planetas
+    - Jivatma
+    - Nakshatra
+
+
+    V0.05 - 5 de Octubre del 2025
+    - Se agrega la sección de Extras, con checks de Introducción y Conclución.
+    - Reorganizacion de carpetas
+    - Se agrega botón de Generar PDF
+    - Se agrega escrito de Introducción
+    - Se agrega escritos de Fases
+
+    V0.04 - 1 de Octubre del 2025
+    - Se hacen cambios en manifest y etiquetas porque no carga favicon ni fullscreen en movil.
+
+    V0.03 - 1 de Octubre del 2025
+    - Se ajusta tamaños de textos en moviles.
+    - Se implementa fullscreen en moviles cuando se guarda en homescreen como webapp
+    - Se agrega favicon en todos los formatos y os
+    
+
+    V0.02 - 1 de Octubre del 2025
+    - Se corrige en telefonos el alto de display para tomar en cuenta barra de herramietas del navegador, cambiando vh por dvh.
+    - Se implementaron variables de color en CSS
+
+    V0.01 - 30 de Septiembre del 2025
+    Layout completo!
