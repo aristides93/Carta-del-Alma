@@ -1,14 +1,16 @@
 
-function generarCarta(event) {
+async function generarCarta(event) {
     event.preventDefault();
     let registroDatos = "";
+    let cartaFinal = "";
+    const nombreTexto = document.getElementById("input-nombre-texto").value;
 
     //INCLUIR NOMBRE
     if(incluirNombre){
         const nombres = document.getElementById("input-nombres").value;
         const apellido1 = document.getElementById("input-apellido-1").value;
         const apellido2 = document.getElementById("input-apellido-2").value;
-        const nombreTexto = document.getElementById("input-nombre-texto").value;
+        
         const idioma = document.getElementById("input-idioma").value;
         const genero = document.getElementById("input-genero").value;
         const valorNombres = calcularValorNombre(nombres);
@@ -118,7 +120,6 @@ function generarCarta(event) {
             todoJivatma += `<br>${jivatma4Planeta1} - ${jivatma4Planeta2}`;
         }
 
-        //registroDatos += "<br><br><h3>Jivatma</h3>" + todoJivatma.substring(4);
         registroDatos += `<br><br><h3>Jivatma</h3>${todoJivatma.substring(4)}`;
 
     }
@@ -146,10 +147,36 @@ function generarCarta(event) {
             alert("Completa todos los datos de Fases");
             return;
         }
-
         registroDatos += `<br><br><h3>Fases</h3>Planeta: ${fasesPlaneta}<br>Años: ${fasesAños}`;
+
+        //agregar Fases a carta Final
+        const docFases = await fetch("resumenes/Fases.json");
+        const textoFases = await docFases.json();
+        let textoFasesFinal = textoFases[fasesPlaneta].replace(/{{nombre}}/g, nombreTexto).replace(/\n/g, "<br>");
+
+        let introduccionFases = textoFases["introduccion"].replace(/{{fasesAños}}/g, fasesAños).replace(/\n/g, "<br>");
+        let contenidoFases = `<p>${textoFasesFinal}</p>`;
+
+        cartaFinal += introduccionFases + contenidoFases + '<div class="page-break"></div>';
+
     }
 
+    //EXTRAS
+    if(incluirExtras){
+        const introduccionCheck = document.getElementById("extras-introduccion-check").checked;
+        const conclucionCheck = document.getElementById("extras-conclucion-check").checked;
+    
+        registroDatos += `<br><br><h3>Extras</h3>Introducción: ${introduccionCheck}<br>Conclución: ${conclucionCheck}`;
+
+        //checar si se requiere introducción
+        if (introduccionCheck){
+            const docIntroduccion = await fetch("resumenes/introduccionCarta.html");
+            const textoIntroduccion = await docIntroduccion.text();
+            cartaFinal = textoIntroduccion + cartaFinal;
+        }
+    }
+
+    //mas código final
     document.getElementById("registroDatos").innerHTML = registroDatos;
     document.getElementById("btn_registro_datos").style.opacity = "1";
     document.getElementById("btn_registro_datos").style.cursor = "pointer";
@@ -158,27 +185,24 @@ function generarCarta(event) {
     document.getElementById("btn_copy").style.cursor = "pointer";
     document.getElementById("btn_copy").style.boxShadow = "0 4px 16px rgba(var(--color-main), .24)";
     document.getElementById("btn_copy").disabled = false;
+    document.getElementById("btn_generar_pdf").style.opacity = "1";
+    document.getElementById("btn_generar_pdf").style.cursor = "pointer";
+    document.getElementById("btn_generar_pdf").style.boxShadow = "0 4px 16px rgba(var(--color-main), .24)";
+    document.getElementById("btn_generar_pdf").disabled = false;
 
     if (window.innerWidth <= 1024) {
         if (window.innerWidth <= 1024) {
             toggleView();
         }
     }
-
     
     // Registrar fecha y hora de Creación de la Carta
     const ahora = new Date();
     let fechaCreacion = ahora.toLocaleString();
     document.getElementById("fechaCreacion").innerText = fechaCreacion; 
 
-
-    // PROBANDO BUSCAR RESUMEN
-    var tituloPlaneta = "Luna";
-    var tituloCasa = "Casa 1";
-    var tituloSigno = "Aries";
-
-    var titulo = `<h2>${tituloPlaneta} en ${tituloCasa} con Signo de ${tituloSigno}</h2>`;
-    document.getElementById("resultadoFinal").innerHTML = titulo + "<p>" + resumenesLuna[tituloCasa][tituloSigno] + "</p>";
+    // mostrar resultado de carta final en pantalla
+    document.getElementById("resultado-carta").innerHTML = cartaFinal;
   
 
 }
@@ -187,10 +211,8 @@ function toggleRegistroDatos() {
     const overlay = document.getElementById('overlay');
     const content = document.getElementById('registroDatos-container');
     overlay.classList.toggle('hidden');
-    content.scrollTop = 0;
-    
-    
-}
+    content.scrollTop = 0;    
+}      
      
 document.getElementById('overlay').classList.add('hidden');
 

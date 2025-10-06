@@ -204,6 +204,45 @@ hr {
     box-shadow: none !important;
 }
 
+/* Check de Extras */
+
+.check-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 15px;
+    border: 2px solid rgb(var(--color-lineas));
+    border-radius: 8px;
+    background: white;
+    color: rgb(var(--color-texto));
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .check-container input[type="checkbox"] {
+    cursor: pointer;
+  }
+
+  /* check activo */
+
+  .check-container input[type="checkbox"]:checked {
+    accent-color: rgb(var(--color-main));
+  }
+
+  .check-container:has(input[type="checkbox"]:checked) {
+    border-color: rgb(var(--color-main));
+    background-color: rgb(var(--color-fondo-2));
+    font-weight: bold;
+}
+
+  .check-text {
+    font-size: 0.9rem;
+    color: rgb(var(--color-texto));
+  }
+
+
+
 .btn-generar {
     width: 100%;
     padding: 10px;
@@ -289,8 +328,28 @@ hr {
     background-color: rgb(var(--color-lineas));
 }
 #btn_registro_datos::before {
-        content: "📊 Ver Registro de Datos";
-    }
+    content: "📊 Ver Registro de Datos";
+}
+
+
+.btn_generar_pdf {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: .9rem;
+    color: white;
+    background: linear-gradient(90deg, rgb(var(--color-main-dark)) 0%, rgb(var(--color-main)) 50%, rgb(var(--color-main-dark)) 100%);
+    box-shadow: 0 4px 16px rgba(var(--color-main), .24);
+}
+.btn_generar_pdf::before {
+    content: "📄 Generar PDF";
+}
+.btn_generar_pdf:hover {
+    background: linear-gradient(90deg, rgb(var(--color-main)) 0%, rgb(var(--color-main-light)) 50%, rgb(var(--color-main)) 100%);
+    box-shadow: 0 6px 16px rgba(var(--color-main), .4);
+}
+
 
 .btn_copy_main {
     padding: 12px 28px;
@@ -298,7 +357,6 @@ hr {
     border-radius: 8px;
     cursor: pointer;
     font-size: .9rem;
-    width: 250px;
 }
 .btn_copy_main::before {
         content: "📋 Copiar Texto";
@@ -348,6 +406,25 @@ hr {
 }
 #registroDatos {
     line-height: 1.5;
+}
+
+/* Estilo de Texto de Carta */
+.resultado-carta {
+    color: rgb(var(--color-texto));
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+.resultado-carta h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.resultado-carta p {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.resultado-carta .page-break {
+    display: none;
 }
 
 /* Estilos para el scrollbar */

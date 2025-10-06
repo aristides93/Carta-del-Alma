@@ -9,6 +9,7 @@ var incluirPlanetas = true;
 var incluirJivatma = true;
 var incluirNakshatra = true;
 var incluirFases = true;
+var incluirExtras = true;
 
 /* PLANETAS */
 
@@ -42,7 +43,7 @@ opcionesPlanetas.forEach(opcion => {
 });
 });
 
-// Función para toggle de la sección planetas
+// Función para toggle Incluir o de Ocultar
 function toggleContent(section) {
     let content = section + "-content";
     let toggleText = section + "-toggle-text";
@@ -79,6 +80,8 @@ function toggleContent(section) {
         case "fases":
             incluirFases = !incluirFases;
             break;
+        case "extras":
+            incluirExtras = !incluirExtras;
         
     }
 }
@@ -152,47 +155,6 @@ document.getElementById('input-jivatma4-check').addEventListener('change', funct
     toggleJivatma('4');
 });
 
-
-
-
-// Botón de Copiar
-
-document.getElementById("btn_copy").style.boxShadow = "none";
-
-function copiarResultado() {
-    let div = document.getElementById("resultado-carta");
-
-    // Hacemos que sea editable temporalmente
-    div.contentEditable = true;
-    div.focus();
-
-    // Seleccionamos todo el contenido
-    let range = document.createRange();
-    range.selectNodeContents(div);
-    let sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-
-    // Ejecutamos comando copiar
-    document.execCommand("copy");
-
-    // Limpiamos selección y editabilidad
-    sel.removeAllRanges();
-    div.contentEditable = false;
-
-    document.getElementById("btn_copy").className = "btn_copy_main btn_copy_used";
-    document.getElementById("resultado-carta").style.boxShadow = "0 0 0 3px rgba(79,175,90,1)";
-    document.getElementById("txt-copiado").style.display = "block";
-
-    setTimeout(
-        function() {
-            //default button content
-            document.getElementById("btn_copy").className = "btn_copy_main btn_copy_default";
-            document.getElementById("resultado-carta").style.boxShadow = "0 4px 8px rgba(118,128,119,0.24)";
-            document.getElementById("txt-copiado").style.display = "none";
-
-        }, 1200);
-}
 
 // SOLO PARA PANTALLAS < 1024px
 function toggleView() {
