@@ -284,15 +284,6 @@ hr {
     align-items: center;
 }
 
-#txt-copiado {
-    color: rgb(var(--color-main));
-    font-weight: bold;
-    background-color: rgba(var(--color-main), .12);
-    padding: 8px 16px;
-    border-radius: 8px;
-    display: none;
-}
-
 .area-resultado {
     background-color: rgb(var(--color-fondo-2));
     padding: 32px;
@@ -328,7 +319,7 @@ hr {
     background-color: rgb(var(--color-lineas));
 }
 #btn_registro_datos::before {
-    content: "📊 Ver Registro de Datos";
+    content: "📊 Registro de Datos";
 }
 
 
@@ -342,9 +333,7 @@ hr {
     background: linear-gradient(90deg, rgb(var(--color-main-dark)) 0%, rgb(var(--color-main)) 50%, rgb(var(--color-main-dark)) 100%);
     box-shadow: 0 4px 16px rgba(var(--color-main), .24);
 }
-.btn_generar_pdf::before {
-    content: "📄 Generar PDF";
-}
+
 .btn_generar_pdf:hover {
     background: linear-gradient(90deg, rgb(var(--color-main)) 0%, rgb(var(--color-main-light)) 50%, rgb(var(--color-main)) 100%);
     box-shadow: 0 6px 16px rgba(var(--color-main), .4);
@@ -353,7 +342,6 @@ hr {
 
 .btn_copy_main {
     padding: 12px 28px;
-    border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: .9rem;
@@ -363,20 +351,42 @@ hr {
     }
 
 .btn_copy_default {
-    color: white;
-    background: linear-gradient(90deg, rgb(var(--color-main-dark)) 0%, rgb(var(--color-main)) 50%, rgb(var(--color-main-dark)) 100%);
-    box-shadow: 0 4px 16px rgba(var(--color-main), .24);
+    color: rgb(var(--color-texto));
+    border: 1px solid rgb(var(--color-lineas));
+    color: rgb(var(--color-texto));
+    background: white;
 }
 .btn_copy_default:hover {
-    background: linear-gradient(90deg, rgb(var(--color-main)) 0%, rgb(var(--color-main-light)) 50%, rgb(var(--color-main)) 100%);
-    box-shadow: 0 6px 16px rgba(var(--color-main), .4);
+    background-color: rgb(var(--color-lineas));
 }
 
 .btn_copy_used {
-    color: white;
-    background-color: rgb(var(--color-main-dark));
-    box-shadow: none;
+    background-color: rgb(var(--color-fondo-2));
+    border: 1px solid rgb(var(--color-main));
+    color: rgb(var(--color-main));
 }
+
+/* Toast de Copy */
+.toast-copy {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: rgb(var(--color-main));
+    color: white;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: .9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.4s;
+    pointer-events: none;
+  }
+
+  .toast-copy.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 
 
 .overlay {
@@ -486,13 +496,10 @@ hr {
     }
 
     #btn_registro_datos::before {
-        content: "📊 Registro";
-    }
-    .btn_copy_main {
-        width: 150px;
+        content: "📊";
     }
     .btn_copy_main::before {
-        content: "📋 Copiar";
+        content: "📋";
     }
 
     .area-resultado {

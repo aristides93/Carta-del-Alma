@@ -171,4 +171,3 @@ function toggleView() {
         btnToggleView.textContent = 'Ver Formulario';
     }
 }
-

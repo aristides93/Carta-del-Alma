@@ -7,6 +7,12 @@
     - Nakshatra
 
 
+    V0.06 - X de Octubre del 2025
+    - Se agrega toast con mensaje de Texto Copiado
+    - Se cambia diseño del btn copiar
+    - Ajuste de tamaños en botones para telefonos
+    - Ajuste de texto doble de btn Generar PDF
+
     V0.05 - 5 de Octubre del 2025
     - Se agrega la sección de Extras, con checks de Introducción y Conclución.
     - Reorganizacion de carpetas

@@ -1,7 +1,5 @@
 // BCOPIAR TODO EL CONTENIDO DE CARTA
 
-document.getElementById("btn_copy").style.boxShadow = "none";
-
 function copiarResultado() {
     let div = document.getElementById("resultado-carta");
 
@@ -23,16 +21,20 @@ function copiarResultado() {
     sel.removeAllRanges();
     div.contentEditable = false;
 
+    //mostrar toast con mensaje de copy
+    const toastCopy = document.getElementById("toast-copy");
+    toastCopy.classList.add("show");
+
     document.getElementById("btn_copy").className = "btn_copy_main btn_copy_used";
     document.getElementById("resultado-carta").style.boxShadow = "0 0 0 3px rgba(79,175,90,1)";
-    document.getElementById("txt-copiado").style.display = "block";
 
+    // Ocultar después de cierto tiempo
     setTimeout(
         function() {
             //default button content
             document.getElementById("btn_copy").className = "btn_copy_main btn_copy_default";
             document.getElementById("resultado-carta").style.boxShadow = "0 4px 8px rgba(118,128,119,0.24)";
-            document.getElementById("txt-copiado").style.display = "none";
+            toastCopy.classList.remove("show");
 
         }, 1200);
 }

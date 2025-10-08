@@ -30,7 +30,7 @@
         <div class="header-left">
             <span class="header-emoji" onclick="llenarTodoRandom()">⭐</span>
             <span class="header-title">Carta del Alma</span>
-            <span class="header-version">v0.05</span>
+            <span class="header-version">v0.06</span>
         </div>
         <div class="btn-toggle-view" id="btn-toggle-view" onclick="toggleView()">Ver Carta</div>
     </header>
@@ -282,8 +282,7 @@
             <!-- Barra de Botones -->
             <div class="barra-botones">
                 <button class="btn_registro_datos" id="btn_registro_datos" onclick="toggleRegistroDatos()" style="opacity: .32; cursor: default" disabled></button>
-                <button class="btn_generar_pdf" id="btn_generar_pdf" onclick="generarPDF()" style="opacity: .32; cursor: default" disabled></button>
-                <p id="txt-copiado">✅ ¡Copiado al portapapeles!</p>
+                <button class="btn_generar_pdf" id="btn_generar_pdf" onclick="generarPDF()" style="opacity: .32; cursor: default" disabled>📄 Generar PDF</button>
                 <button class="btn_copy_main btn_copy_default" id="btn_copy" onclick="copiarResultado()" style="opacity: .32; cursor: default" disabled></button>
             </div>
 
@@ -343,6 +342,8 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
                         <button class="btn_registro_datos" onclick="toggleRegistroDatos()" style="margin-top: 32px">Cerrar</button>
                     </div>
                 </div>
+                <!-- Toast de Copy -->
+                <div id="toast-copy" class="toast-copy">✅ Texto Copiado</div>
             </section>
 
         </section>
